@@ -1,0 +1,19 @@
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Connecting Shopify…</title>
+<body style="font-family:Arial,sans-serif;display:grid;place-items:center;min-height:90vh;margin:0;background:#fafafa">
+<div style="max-width:420px;text-align:center;padding:24px"><h2 id="t">Connecting Shopify…</h2><p id="m" style="color:#555">Please wait.</p></div>
+<script>
+// Shopify returns here after "Install". Pass the signed query on, unchanged, to the
+// WebConnect server that started the install (its address is inside the signed state).
+(function () {
+  var q = new URLSearchParams(location.search), srv = '';
+  try {
+    var body = (q.get('state') || '').split('.')[0].replace(/-/g, '+').replace(/_/g, '/');
+    srv = JSON.parse(atob(body)).srv || '';
+  } catch (e) {}
+  var ok = /^https:\/\/[a-z0-9-]+\.trycloudflare\.com$/.test(srv) || /^https:\/\/[a-z0-9-]+\.onrender\.com$/.test(srv) || srv === 'http://localhost:8790';
+  if (ok) return location.replace(srv + '/shopify/callback' + location.search);
+  document.getElementById('t').textContent = 'Link not valid';
+  document.getElementById('m').textContent = 'Start again from the WebConnect app.';
+})();
+</script>
