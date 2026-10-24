@@ -1,0 +1,27 @@
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WebConnect Incident Response</title>
+<body style="font-family:Arial,sans-serif;max-width:720px;margin:0 auto;padding:24px;line-height:1.55;color:#222">
+<h1>WebConnect — Security and Incident Response Policy</h1>
+<p><i>Last updated: 24 October 2026</i></p>
+
+<h2>Everyday safeguards</h2>
+<ul>
+  <li>Access to production systems (Firebase, servers, Shopify Partner account) is limited to the WebConnect operator and protected by strong, unique passwords and two-step verification.</li>
+  <li>Servers are reached only with SSH keys; secrets live in environment files readable only by the service.</li>
+  <li>Data is encrypted in transit and at rest; Shopify access tokens are encrypted with AES-256-GCM.</li>
+  <li>Access to personal data in Google Cloud is recorded in audit logs.</li>
+  <li>Test stores and test data are kept separate from merchants' live data.</li>
+  <li>Data is stored with Google Firebase, which keeps redundant, encrypted copies, so a single failure does not lose data.</li>
+</ul>
+
+<h2>When an incident happens</h2>
+<ol>
+  <li><b>Detect and contain (same day):</b> revoke exposed keys or tokens, rotate passwords, stop affected services.</li>
+  <li><b>Assess (within 24 hours):</b> find out what happened, which merchants and which data are affected, using audit and server logs.</li>
+  <li><b>Notify (within 72 hours):</b> tell affected merchants by email — what happened, what data, what we did and what they should do. Notify Shopify and authorities where the law requires.</li>
+  <li><b>Fix and learn:</b> remove the cause, restore service, and write down what changes prevent it from happening again.</li>
+</ol>
+
+<h2>Report a problem</h2>
+<p>Email <a href="mailto:fazi002626@gmail.com">fazi002626@gmail.com</a> with "Security" in the subject. We answer within 2 business days.</p>
+</body>
